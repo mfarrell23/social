@@ -14,12 +14,6 @@ const thoughtsSchema = new Schema(
       maxlength: 280,
       minlength: 1,
     },
-    reactions: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Thoughts',
-      },
-    ],
     createdAt: {
       type: Date,
       default: Date.now,
@@ -31,7 +25,7 @@ const thoughtsSchema = new Schema(
     }   
   },
   {
-    reac: [ReactionsSchema],
+    reaction: [ReactionsSchema],
   },
   {
     toJSON: {
