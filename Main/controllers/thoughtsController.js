@@ -9,7 +9,7 @@ module.exports = {
   },
   // Get a thought
   getSingleThought(req, res) {
-  Thought.findOne({ _id: req.params.thoughtId })
+  Thoughts.findOne({ _id: req.params.thoughtId })
       .select('-__v')
       .then((thought) =>
         !thought
@@ -20,7 +20,7 @@ module.exports = {
   },
   // Add a thought
     addThought(req, res) {
-    Thought.create(req.body)
+    Thoughts.create(req.body)
       .then((thought) => res.json(thought))
       .catch((err) => {
         console.log(err);
@@ -29,7 +29,7 @@ module.exports = {
   },
   // Delete a thought
   deleteThought(req, res) {
-    Thought.findOneAndDelete({ _id: req.params.thoughtId })
+    Thoughts.findOneAndDelete({ _id: req.params.thoughtId })
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: 'No thought with that ID' })
@@ -40,7 +40,7 @@ module.exports = {
   },
   // Update a thought
   updateThought(req, res) {
-    Thought.findOneAndUpdate(
+    Thoughts.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $set: req.body },
       { runValidators: true, new: true }

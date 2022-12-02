@@ -16,42 +16,40 @@ connection.once('open', async () => {
   // Create empty array to hold the students
   const _users = [];
   const _thoughts = [];
-  const _friends = [];
 
   // Loop 20 times -- add students to the students array
   for (let i = 0; i < userName.length; i++) {
     // Get some random assignment objects using a helper function that we imported from ./data
 
-    const _name = userName[i]
-    const _email = email[i]
-    const _thought = thought[i]
-    const _friend = friend[i]
+    const name = userName[i]
+    const userEmail = email[i]
+    const userthought = thought[i]
+    const userFriend = friend[i]
 
     _users.push({
-      _name,
-      _email,
-      _thought,
-      _friend
+      name,
+      userEmail,
+      userthought,
+      userFriend
     });
 
-    const _thoughtId = i;
-    const _thoughtText = _thought
-    const _createAt = dates[i]
-    const _userName = _name
+    const thoughtId = i;
+    const thoughtText = userthought
+    const createAt = dates[i]
 
 
-   _thought.push({
-      _thoughtId,
-      _thoughtText,
-      _createAt,
-      _userName
+   _thoughts.push({
+      thoughtId,
+      thoughtText,
+      createAt,
+      name
    }) 
   
   }
 
   // Add User and Thoughts to the collection and await the results
   await User.collection.insertMany(_users);
-  await Thoughts.connection.insertMany(_thoughts);
+  await Thoughts.collection.insertMany(_thoughts);
 
   // Add courses to the collection and await the results
   // await Thoughts.collection.insertOne({
