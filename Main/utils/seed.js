@@ -21,30 +21,20 @@ connection.once('open', async () => {
   for (let i = 0; i < userName.length; i++) {
     // Get some random assignment objects using a helper function that we imported from ./data
 
-    const name = userName[i]
-    const userEmail = email[i]
-    const userthought = thought[i]
-    const userFriend = friend[i]
-
     _users.push({
-      name,
-      userEmail,
-      userthought,
-      userFriend
+      name: userName[i],
+      email: email[i],
+      friend: [friend[i]],
+      thoughts: [thought[i]],
+      userId: i
     });
 
-    const thoughtId = i;
-    const thoughtText = userthought
-    const createAt = dates[i]
-
-
    _thoughts.push({
-      thoughtId,
-      thoughtText,
-      createAt,
-      name
-   }) 
-  
+      thoughtText: thought[i],
+      createAt: dates[i],
+      name: userName[i],
+      thoughtsId: i
+   })  
   }
 
   // Add User and Thoughts to the collection and await the results

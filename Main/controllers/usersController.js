@@ -1,10 +1,9 @@
-const { ObjectId } = require('mongoose').Types;
-const { Users, Friends } = require('../models');
+const { User, Friends } = require('../models');
 
 module.exports = {
   // Get all users
   getUsers(req, res) {
-    Users.find()
+    User.find()
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
@@ -20,8 +19,8 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   // Add a user
-    addUser(req, res) {
-    User.create(req.body)
+  addUser(req, res) {
+  User.create(req.body)
       .then((friend) => res.json(user))
       .catch((err) => {
         console.log(err);

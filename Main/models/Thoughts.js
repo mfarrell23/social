@@ -36,7 +36,7 @@ const ReactionsSchema = new Schema(
 );
 const thoughtsSchema = new Schema(
   {
-    thoughtId: {
+    _id: {
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId(),
     },
@@ -63,7 +63,6 @@ const thoughtsSchema = new Schema(
     toJSON: {
       getters: true,
     },
-    id: true,
   }
 );
 

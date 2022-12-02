@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "kill-port": "^2.0.1",
     "mongoose": "^6.0.13",
     "reaction": "^4.0.16"
   },
