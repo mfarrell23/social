@@ -36,10 +36,6 @@ const ReactionsSchema = new Schema(
 );
 const thoughtsSchema = new Schema(
   {
-    _id: {
-      type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
-    },
     thoughtText: {
       type: String,
       required: true,
@@ -50,8 +46,8 @@ const thoughtsSchema = new Schema(
       type: Date,
       default: Date.now,
     },
-      userName:{
-        type: String,
+    userName:{
+      type: String,
       required: true,
       max_length: 50,
     }   

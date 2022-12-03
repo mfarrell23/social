@@ -21,7 +21,7 @@ module.exports = {
   // Add a user
   addUser(req, res) {
   User.create(req.body)
-      .then((friend) => res.json(user))
+      .then((users) => res.json(users))
       .catch((err) => {
         console.log(err);
         return res.status(500).json(err);

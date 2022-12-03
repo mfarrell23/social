@@ -22,11 +22,13 @@ connection.once('open', async () => {
     // Get some random assignment objects using a helper function that we imported from ./data
 
     _users.push({
-      name: userName[i],
+      userName: userName[i],
       email: email[i],
-      friend: [friend[i]],
-      thoughts: [thought[i]],
-      userId: i
+      friends: [],
+      thoughts: [],
+      __v: 0,
+      friendCount: 0
+
     });
 
    _thoughts.push({
@@ -49,7 +51,7 @@ connection.once('open', async () => {
   // });
 
   // // Add courses to the collection and await the results
-  // await Thoughts.collection.insertOne({
+  // await Users.collection.insertOne({
   //   courseName: 'UCLA',
   //   inPerson: false,
   //   users: [...],

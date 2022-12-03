@@ -3,10 +3,6 @@ const { Schema, model } = require('mongoose');
 // Schema to create Student model
 const userSchema = new Schema(
   {
-        _id: {
-      type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
-    },
     userName: {
       type: String,
       required: true,
@@ -38,5 +34,4 @@ const userSchema = new Schema(
 );
 
 const User = model('user', userSchema);
-
 module.exports = User;
