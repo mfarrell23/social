@@ -40,7 +40,7 @@ module.exports = {
   },
   // Update a user
   updateUser(req, res) {
-    Friend.findOneAndUpdate(
+    User.findOneAndUpdate(
       { _id: req.params.userId },
       { $set: req.body },
       { runValidators: true, new: true }
