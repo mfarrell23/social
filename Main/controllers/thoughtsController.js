@@ -1,4 +1,4 @@
-const { Thoughts, User } = require('../models');
+const { Thoughts, User, Reactions } = require('../models');
 
 module.exports = {
   // Get all thoughts
@@ -54,22 +54,21 @@ module.exports = {
   },
 // Add a reaction
   addReaction(req, res) {
-    Thoughts.create(req.body)
-        .then((thought) => res.json(thought))
-        .catch((err) => {
-          console.log(err);
-          return res.status(500).json(err);
-        });
+    Thoughts.findOneAndUpdate(
+      { _id: req.params.thoughtsId },
+      { $addToSet: { reactions: req.params.thoughtsId } },
+      { runValidators: true, new: true }
+    )
+      .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: 'No thought with this id!' })
+          : res.json(thought)
+      )
+      .catch((err) => res.status(500).json(err));
     },
     // Delete a reaction
     deleteReaction(req, res) {
-      reactions.findOneAndDelete({ _id: req.params.reactionsId })
-        .then((reactions) =>
-          !thought
-            ? res.status(404).json({ message: 'No reaction with that ID' })
-            : Thought.deleteMany({ _id: { $in: Thoughts.thoughtsId } }) 
-        )
-        .then(() => res.json({ message: 'Thought deleted!' }))
+      Reactions.findOneAndDelete({ _id: req.params.reactionsId })
         .catch((err) => res.status(500).json(err));
     }
 };

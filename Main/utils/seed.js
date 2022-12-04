@@ -31,9 +31,7 @@ connection.once('open', async () => {
 
    _thoughts.push({
       thoughtText: thought[i],
-      createAt: dates[i],
       name: userName[i],
-      thoughtsId: i
    })  
   }
 

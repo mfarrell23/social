@@ -18,10 +18,5 @@ const friend = [
   'Nancy'
 ]
 
-const dates = [
-  '5/23/2022',
-  '2/24/2022'
-]
-
 // Export the functions for use in seed.js
-module.exports = { userName, email, thought, friend, dates };
+module.exports = { userName, email, thought, friend };
