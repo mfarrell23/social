@@ -14,4 +14,4 @@ The user must make sure to run mongodb to get the db and tables. Once this is do
 
 github- https://github.com/mfarrell23/social.git
 
-video- 
+video- https://drive.google.com/file/d/1lcWoIe2FoGDprvGMGVpxheIcszaOT1P3/view

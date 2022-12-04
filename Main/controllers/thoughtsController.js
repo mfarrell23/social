@@ -82,20 +82,20 @@ module.exports = {
     },
     // Delete a reaction
     deleteReaction(req, res) {
-      console.log('remove a reaction');
-      console.log(req.body);
-      Thoughts.findOneAndUpdate(
-        { _id: req.params.thoughtsId },
-        { $pull: { reactions: req.params.reactionsId } },
-        { runValidators: true, new: true }
-      )
-        .then((thoughts) =>
-          !user
-            ? res
-                .status(404)
-                .json({ message: 'No reaction found with that ID' })
-            : res.json(thoughts)
+        console.log('deleted a reaction');
+        console.log(req.body);
+        Thoughts.findOneAndUpdate(
+          { _id: req.params.thoughtsId },
+          { $pull: { reactions: req.params.reactionsId } },
+          { runValidators: true, new: true }
         )
-        .catch((err) => res.status(500).json(err));
-    },
+          .then((thought) =>
+            !thought
+              ? res
+                  .status(404)
+                  .json({ message: 'No thought found with that ID' })
+              : res.json(thought)
+          )
+          .catch((err) => res.status(500).json(err));
+      },
 };
