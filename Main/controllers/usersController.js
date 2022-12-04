@@ -1,34 +1,42 @@
-const { User, Friends } = require('../models');
+const { User } = require('../models');
 
 module.exports = {
   // Get all users
   getUsers(req, res) {
+    console.log('getting all users');
+    console.log(req.body);
     User.find()
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
   // Get a user
   getSingleUser(req, res) {
-  User.findOne({ _id: req.params.userId })
-      .select('-__v')
-      .then((user) =>
-        !user
-          ? res.status(404).json({ message: 'No user with that ID' })
-          : res.json(user)
-      )
-      .catch((err) => res.status(500).json(err));
-  },
+    console.log('getting a user');
+    console.log(req.body);
+    User.findOne({ _id: req.params.userId })
+        .select('-__v')
+        .then((user) =>
+          !user
+            ? res.status(404).json({ message: 'No user with that ID' })
+            : res.json(user)
+        )
+        .catch((err) => res.status(500).json(err));
+    },
   // Add a user
   addUser(req, res) {
-  User.create(req.body)
-      .then((users) => res.json(users))
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json(err);
-      });
+    console.log('Adding a user');
+    console.log(req.body);
+    User.create(req.body)
+        .then((users) => res.json(users))
+        .catch((err) => {
+          console.log(err);
+          return res.status(500).json(err);
+        });
   },
   // Delete a user
   deleteUser(req, res) {
+    console.log('removed as user');
+    console.log(req.body);
     User.findOneAndDelete({ _id: req.params.userId })
       .then((user) =>
         !user
@@ -54,7 +62,7 @@ module.exports = {
   },
    // Post a friend to a user
     postFriend(req, res) {
-      console.log('You are adding a friend');
+      console.log('adding a friend');
       console.log(req.body);
       User.findOneAndUpdate(
         { _id: req.params.userId },
@@ -72,6 +80,8 @@ module.exports = {
     },
   //delete friend
   deleteFriend(req, res) {
+    console.log('deleted a friend');
+    console.log(req.body);
     User.findOneAndUpdate(
       { _id: req.params.userId },
       { $pull: { friends: req.params.friendId } },

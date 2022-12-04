@@ -13,10 +13,15 @@ const thought = [
   'Do you like the song?'
 ]
 
+const reactBody = [
+  'Let me go!',
+  'Finally I am done'
+]
+
 const friend = [
   'Bill',
   'Nancy'
 ]
 
 // Export the functions for use in seed.js
-module.exports = { userName, email, thought, friend };
+module.exports = { userName, email, thought, friend, reactBody };

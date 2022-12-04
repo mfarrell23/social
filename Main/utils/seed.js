@@ -1,6 +1,6 @@
 const connection = require('../config/connection');
 const { Thoughts, User } = require('../models');
-const { userName, email, thought, friend, dates } = require('./data');
+const { userName, email, thought, reactBody } = require('./data');
 
 connection.on('error', (err) => err);
 
@@ -32,6 +32,7 @@ connection.once('open', async () => {
    _thoughts.push({
       thoughtText: thought[i],
       name: userName[i],
+      reactionBody: reactBody[i]
    })  
   }
 
